@@ -285,19 +285,19 @@ const ChatWidget: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="w-96 h-128 bg-chat-bg border border-chat-border rounded-2xl shadow-2xl backdrop-blur-sm flex flex-col overflow-hidden"
+            className="w-96 h-128 bg-black border border-gray-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-chat-surface border-b border-chat-border p-4 flex items-center justify-between">
+            <div className="bg-gray-900 border-b border-gray-700 p-4 flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-linear-to-br from-accent-500 to-accent-600 rounded-full flex items-center justify-center">
                   <Bot className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-chat-text font-semibold text-sm">
+                  <h3 className="text-white font-semibold text-sm">
                     HaiIntel Assistant
                   </h3>
-                  <p className="text-chat-textSecondary text-xs">
+                  <p className="text-gray-400 text-xs">
                     AI-powered support
                   </p>
                 </div>
@@ -305,13 +305,13 @@ const ChatWidget: React.FC = () => {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={clearChat}
-                  className="text-chat-textSecondary hover:text-chat-text transition-colors text-xs"
+                  className="text-gray-400 hover:text-white transition-colors text-xs"
                 >
                   Clear
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-chat-textSecondary hover:text-chat-text transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -321,8 +321,8 @@ const ChatWidget: React.FC = () => {
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.length === 0 && (
-                <div className="text-center text-chat-textSecondary text-sm">
-                  <Bot className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                <div className="text-center text-gray-400 text-sm">
+                  <Bot className="w-8 h-8 mx-auto mb-2 opacity-50 text-gray-400" />
                   <p>Welcome to HaiIntel Assistant!</p>
                   <p className="text-xs mt-1">
                     Ask me anything about HaiIntel.
@@ -347,20 +347,20 @@ const ChatWidget: React.FC = () => {
                   >
                     <div
                       className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${
-                        message.isUser ? "bg-chat-user" : "bg-chat-ai"
+                        message.isUser ? "bg-blue-500" : "bg-gray-700"
                       }`}
                     >
                       {message.isUser ? (
                         <User className="w-3 h-3 text-white" />
                       ) : (
-                        <Bot className="w-3 h-3 text-chat-text" />
+                        <Bot className="w-3 h-3 text-white" />
                       )}
                     </div>
                     <div
                       className={`px-3 py-2 rounded-2xl ${
                         message.isUser
-                          ? "bg-chat-user text-white"
-                          : "bg-chat-surface text-chat-text border border-chat-border"
+                          ? "bg-blue-500 text-white"
+                          : "bg-gray-800 text-white border border-gray-600"
                       }`}
                     >
                       <p className="text-sm leading-relaxed">{message.text}</p>
@@ -384,10 +384,10 @@ const ChatWidget: React.FC = () => {
                   className="flex justify-start"
                 >
                   <div className="flex items-start space-x-2">
-                    <div className="w-6 h-6 rounded-full bg-chat-ai flex items-center justify-center">
-                      <Bot className="w-3 h-3 text-chat-text" />
+                    <div className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center">
+                      <Bot className="w-3 h-3 text-white" />
                     </div>
-                    <div className="bg-chat-surface border border-chat-border px-3 py-2 rounded-2xl">
+                    <div className="bg-gray-800 border border-gray-600 px-3 py-2 rounded-2xl">
                       <div className="flex space-x-1">
                         <motion.div
                           animate={{ scale: [1, 1.2, 1] }}
@@ -396,7 +396,7 @@ const ChatWidget: React.FC = () => {
                             repeat: Infinity,
                             delay: 0,
                           }}
-                          className="w-2 h-2 bg-chat-textSecondary rounded-full"
+                          className="w-2 h-2 bg-gray-400 rounded-full"
                         />
                         <motion.div
                           animate={{ scale: [1, 1.2, 1] }}
@@ -405,7 +405,7 @@ const ChatWidget: React.FC = () => {
                             repeat: Infinity,
                             delay: 0.2,
                           }}
-                          className="w-2 h-2 bg-chat-textSecondary rounded-full"
+                          className="w-2 h-2 bg-gray-400 rounded-full"
                         />
                         <motion.div
                           animate={{ scale: [1, 1.2, 1] }}
@@ -414,7 +414,7 @@ const ChatWidget: React.FC = () => {
                             repeat: Infinity,
                             delay: 0.4,
                           }}
-                          className="w-2 h-2 bg-chat-textSecondary rounded-full"
+                          className="w-2 h-2 bg-gray-400 rounded-full"
                         />
                       </div>
                     </div>
@@ -429,7 +429,7 @@ const ChatWidget: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="space-y-2"
                 >
-                  <p className="text-chat-textSecondary text-xs">
+                  <p className="text-gray-400 text-xs">
                     Suggested questions:
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -437,7 +437,7 @@ const ChatWidget: React.FC = () => {
                       <button
                         key={index}
                         onClick={() => handleFollowUpClick(suggestion)}
-                        className="text-xs bg-chat-surface border border-chat-border text-chat-text hover:bg-chat-border transition-colors px-3 py-1 rounded-full"
+                        className="text-xs bg-gray-800 border border-gray-600 text-white hover:bg-gray-700 transition-colors px-3 py-1 rounded-full"
                       >
                         {suggestion}
                       </button>
@@ -450,7 +450,7 @@ const ChatWidget: React.FC = () => {
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-chat-border bg-chat-surface">
+            <div className="p-4 border-t border-gray-700 bg-gray-900">
               <div className="flex items-center space-x-2">
                 <input
                   ref={inputRef}
@@ -459,13 +459,13 @@ const ChatWidget: React.FC = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask about HaiIntel..."
-                  className="flex-1 bg-chat-bg border border-chat-border text-chat-text placeholder-chat-textSecondary px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+                  className="flex-1 bg-black border border-gray-600 text-white placeholder-gray-400 px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
                   disabled={isTyping}
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim() || isTyping}
-                  className="bg-accent-500 hover:bg-accent-600 disabled:bg-chat-border disabled:cursor-not-allowed text-white p-2 rounded-full transition-colors"
+                  className="bg-accent-500 hover:bg-accent-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white p-2 rounded-full transition-colors"
                 >
                   <Send className="w-4 h-4" />
                 </button>
@@ -478,7 +478,7 @@ const ChatWidget: React.FC = () => {
       {/* Chat Launcher */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-linear-to-br from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+        className="w-14 h-14 bg-black hover:bg-gray-800 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center border-2 border-accent-500 hover:border-accent-400"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
