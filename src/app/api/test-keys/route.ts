@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
     const results = {
-        openai: { available: false, error: null },
-        google: { available: false, error: null }
+        openai: { available: false, error: null as string | null },
+        google: { available: false, error: null as string | null }
     };
 
     // Test OpenAI API Key
